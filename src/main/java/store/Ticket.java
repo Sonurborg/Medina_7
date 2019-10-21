@@ -19,14 +19,23 @@ public class Ticket {
         this.ID=ID;
         this.date=date;
         this.meals=meals;
-        this.total=total;
+        this.total=getTotalPrice(meals);
     }
+    
     
     public Ticket(Date date,ArrayList meals,int total) {
         this.date=date;
         this.meals=meals;
-        this.total=total;
+        this.total=getTotalPrice(meals);
         this.ID=Store.tickets.size();
+    }
+    
+    private int getTotalPrice(ArrayList<Meal> meals){
+        int acc= 0;
+        for (int i=0;i<meals.size();i++) {
+            acc+=meals.get(i).getPrice();
+        }
+        return acc;
     }
 
     public int getID() {
