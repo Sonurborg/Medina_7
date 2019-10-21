@@ -1,8 +1,10 @@
 package main;
+import fileManager.CsvManager;
 import userInterface.Menu;
 
 public class Main {
 	public static void main(String[] aArgs) {
-		Menu.run();
+            CsvManager.readFile();
+            Menu.run();
         }
 }

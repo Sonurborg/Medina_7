@@ -6,19 +6,16 @@ import java.nio.file.Files;
 import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Calendar;
+import java.sql.Date;
+import java.util.ArrayList;
 import store.*;
 
-/**
- *
- * @author sonur
- */
 public class CsvManager {
     
-    private static Path file=Paths.get("Tickets.csv");
+    private static Path file=Paths.get("boletas.csv");
     
     public static void addTicket(Ticket tckt){
-        String line=(tckt.getID()+","+tckt.getDate()+","+tckt.getTotal());
+        String line=(tckt.getID()+","+tckt.getDate()+","+tckt.getMealsString()+","+tckt.getTotal());
         tryWrite(line);
     }
     
@@ -59,8 +56,17 @@ public class CsvManager {
     
     private static void interpreter(String[] data){
         int ID=Integer.parseInt(data[0]);
-        Calendar date=Calendar.(data[1]);
-        String adress=(data[2]+","+data[3]+","+data[4]+","+data[5]);
-        Main.tickets.add(new Ticket(name,rut,adress));
+        Date date=Date.valueOf(data[1]);
+        ArrayList meals=getMeals(data);
+        int total=Integer.parseInt(data[data.length]);
+        Store.tickets.add(new Ticket(ID,date,meals,total));
+    }
+    
+    private static ArrayList getMeals(String[] data){
+        ArrayList<Meal> acc=new ArrayList<>();
+        for (int i=2;i<data.length-1;i++) {
+            acc.add(Meal.valueOf(data[i]));
+        }
+        return acc;
     }
 }

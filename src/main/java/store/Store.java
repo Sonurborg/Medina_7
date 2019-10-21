@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Store {
 
-    private ArrayList<Ticket> tickets = new ArrayList<>();
+    public static ArrayList<Ticket> tickets = new ArrayList<>();
     
     
 }

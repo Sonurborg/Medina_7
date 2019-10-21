@@ -23,7 +23,7 @@ public class Menu {
      */
     private static int optionSel() {
         System.out.println("Seleccione lo que desea realizar");
-        System.out.println(" 1 - Agregar nuevo Libro");
+        System.out.println(" 1 - Vender Productos");
         System.out.println(" 2 - Mostrar los Libros");
         System.out.println(" 3 - Vender un Libro");
         System.out.println(" 4 - Salir");
